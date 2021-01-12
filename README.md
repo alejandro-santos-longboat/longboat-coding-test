@@ -1,24 +1,4 @@
-# README
+# LONGBAOT CODING TEST
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Specifications:
+*Create a basic Rails application using a SQL database. The application should provide a user model that incorporates elements such as a unique user 'handle' (their username), password and a login failure count. Provide a HTML based UI that provides for a user login (users can be created via direct access to the database only, no need for a user sign up). Upon successful completion, the user will be presented with a basic log out option (nothing fancy needed here) so that the process can be attempted repeatedly. The code should account for login failures and lock the user account (i.e. prevent log in) after 3 consecutive fails (reset the failure count upon a successful login). Include unit tests for the models and controllers created. Do not use libraries or features that already encapsulate a lot of this process (e.g. devise or has_secure_password). Once you're happy with what you have, zip up the Rails directory and provide that to us for assessment.*
