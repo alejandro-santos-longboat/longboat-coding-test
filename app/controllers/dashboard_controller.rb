@@ -7,7 +7,14 @@ class DashboardController < ApplicationController
             return
         end
         
-        @username = helpers.get_username(session[:user_id])
+        user = helpers.get_user(session[:user_id])
+        
+        if user.nil? 
+            redirect_to '/'
+            return
+        end
+
+        @username = user.username
     end
     
 end
