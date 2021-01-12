@@ -1,15 +1,15 @@
 class User < ApplicationRecord
-    attribute :loging_failure_count, :integer, default: 0
+    attribute :login_failure_count, :integer, default: 0
     
     validates :username,    :presence => true, 
                             :length => { :within => 3..20 },
+                            :uniqueness => true,
                             format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
     validates :password,    :presence => true
     validates :salt,        :presence => true
 
-    after_initialize :after_init_callback, :validate_username
-    before_save :validate_username
+    after_initialize :validate_password_encryption, :validate_username_case
 
     def valid_password?(pass)
         return self.password == Digest::SHA2.hexdigest(self.salt + pass)
@@ -33,17 +33,14 @@ class User < ApplicationRecord
     end
 
     private
-        def after_init_callback
-            # Initialize logging failure count
-            # self.loging_failure_count = 0 if self.new_record?
-
+        def validate_password_encryption
             # Encryp password before saving for the first time
-            encrypt_password(self.password) if self.new_record?
+            encrypt_password(self.password) if self.new_record? && !self.password.nil? 
         end
-        
-        def validate_username
+
+        def validate_username_case
             # Save username as lowecase
-            self.username = self.username.downcase
+            self.username = self.username.downcase if !self.username.nil? 
         end
 
         def encrypt_password(pass)
