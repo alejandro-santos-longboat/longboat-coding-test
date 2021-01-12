@@ -209,7 +209,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
-  bootstrap-sass (~> 3.3, >= 3.3.6)
+  bootstrap-sass
   byebug
   capybara (>= 3.26)
   jbuilder (~> 2.7)

@@ -6,18 +6,32 @@
 
     <body>
         <h1> Login </h1>
-        <form action="/sessions/create" method="POST">
+        <!-- <form action="/sessions/create" method="POST">
             <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
             <input type="username" name="login[username]" placeholder="username">
             <input type="password" name="login[password]">
-            <input type="submit" name="submit" class="submit">
+            <input type="submit"  class="submit">
+        </form>  -->
+
+        <form action="/sessions/create" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="username" class="form-control" name="login[username]" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="login[password]" id="password" placeholder="Enter password">
+                <small id="passwordHelp" class="form-text text-muted">Password needs to be 4-25 characters long.</small>
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
 
-        <div class="notice">
+        <div class="login-notice">
             <% if flash[:login_notice] %>
-                <p> <%=flash[:login_notice]%> </p>
+                <small id="login-notice-message" class="form-text text-warning"> <%=flash[:login_notice]%> </small>
             <%end%>
-        </div>  
+        </div>      
 
     </body>
 </html>
