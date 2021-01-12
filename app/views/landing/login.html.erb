@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login and registration</title>
+    </head>
+
+    <body>
+        <h1> Login </h1>
+        <form action="/sessions/create" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <input type="username" name="login[username]" placeholder="username">
+            <input type="password" name="login[password]">
+            <input type="submit" name="submit" class="submit">
+        </form>
+
+        <div class="notice">
+            <% if flash[:login_notice] %>
+                <p> <%=flash[:login_notice]%> </p>
+            <%end%>
+        </div>  
+
+    </body>
+</html>
